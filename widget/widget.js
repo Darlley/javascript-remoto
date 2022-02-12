@@ -1,12 +1,18 @@
 var Stork = (function(window, undefined){
   var Stork = {};
 
-  console.log(window, undefined)
-
-  function loadSupportingFiles(callback){}
-  function getWidgetParams(){}
-  function getRatingData(params, callback){}
-  function drawWidget(){}
+  function loadSupportingFiles(callback){
+    // carregar arquvios de apoio necessarios (p. 68)
+  }
+  function getWidgetParams(){
+    // extrair parâmetros como ID do produto ou até identificação do provedor (p. 69) 
+  }
+  function getRatingData(params, callback){
+    // Obter dados do produto (nome, URL, avaliação) a partir do servidor (p. 69) 
+  }
+  function drawWidget(){
+    // Utilizar os dados recebidos do servidor e apresentar o widget (p. 69)
+  }
 
   /*
    *
