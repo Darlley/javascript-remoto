@@ -15,8 +15,17 @@
   <script>
     (function(){
       var _tagScript = document.createElement('script');
-      _tagScript.src = 'http://widget.localhost/widget.js';
+
+      // (p. 77)
+      var secure = window.location.protocol === 'https';
+      _tagScript.src = (secure ? 'https' : 'http') + '://widget.localhost/widget.js';
       _tagScript.async = true;
+
+      // "URLs relativas a procolos" (p. 77)
+      // script.src = '//camerastork.com/widget.js'
+      // será resolvida automaticamente para http:// ou https:// relativo ao protocolo
+      // mas pode ser resolvido para file:// (se ver uma página pelo sistem de arquivos)
+      // e pode duplicar a tags se for adicionado via tag link
 
       document.querySelectorAll('script')[0].insertAdjacentElement('beforebegin', _tagScript);
     })()
