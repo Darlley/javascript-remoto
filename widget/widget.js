@@ -1,64 +1,51 @@
 function loadSupportingFiles(){
-  // carregar arquvios de apoio necessarios (p. 68)
 
-  // (p. 71)
-  var _tagScriptJquery = document.createElement('script');
-  _tagScriptJquery.src = "https://code.jquery.com/jquery-3.6.0.min.js";
-  _tagScriptJquery.async = true;
+  // css
+  var _tagLinkStyles = document.createElement('link');
+  _tagLinkStyles.setAttribute("href", "http://widget.localhost/growp.css");
+  _tagLinkStyles.setAttribute("rel", "stylesheet")
+  _tagLinkStyles.setAttribute("type", "text/css")
 
-  document.querySelectorAll('script')[0].insertAdjacentElement('beforebegin', _tagScriptJquery);
-
-  // "Diversas bibliotecas comumente utilizadas, conhecidas como carregadores de scripts, farão esse trabalho por você" (p. 75)
-  // LABjs, RequireJS e yepnope
+  document.querySelector('head').insertAdjacentElement('beforeend', _tagLinkStyles);
 }
 loadSupportingFiles(); 
 
 function getWidgetParams(){
-  // extrair parâmetros como ID do produto ou até identificação do provedor (p. 69) ~
+  // create button
+  var button = document.createElement('button')
+  button.setAttribute('class','grwp grwp-btn')
+  // icon button
+  var logoButton = document.createElement('img')
+  logoButton.setAttribute('src','http://widget.localhost/growp.svg')
+  button.appendChild(logoButton)
+  // text button
+  var textButton = document.createElement('p')
+  textButton.innerHTML = "Precisa de Ajuda?"
+  button.appendChild(textButton)
+  
+  
 
-  console.log('parametros')
+  // criar widget
+  var widget = document.createElement('div')
+  widget.setAttribute('class','grwp grwp-widget hidden')
+  
 
-  var elem;
-  var src;
-
-  var scripts = document.querySelectorAll('script');
-  scripts.forEach(item => {
-    elem = item;
-    src = elem.src;
-
-    
-    if(src && /widget\.localhost\/widget\.js/.test(src)){
-      console.log(item, elem, src)
-      return src;
-    }
+  // EVENTOS
+  // criar evento de click no botão
+  button.setAttribute('data-growp-btn','')
+  button.addEventListener('click', () => {
+    button.classList.add('hidden')
+    widget.classList.remove('hidden')
+  })
+  // criar evento de click no widget
+  widget.addEventListener('click', () => {
+    widget.classList.add('hidden')
+    button.classList.remove('hidden')
   })
 
-  return null;
-
+  // adicionar bottão ao document
+  document.querySelector('body').insertAdjacentElement('beforeend', button);
+  // adicionar widget ao document
+  document.querySelector('body').insertAdjacentElement('beforeend', widget);
 }
 getWidgetParams();
-
-function getRatingData(params, callback){
-  // Obter dados do produto (nome, URL, avaliação) a partir do servidor (p. 69)
-}
-
-function drawWidget(){
-  // Utilizar os dados recebidos do servidor e apresentar o widget (p. 69)
-}
-
-
-// var appendTo = document.querySelector('#stork-widget');
-// appendTo.parentNode.insertBefore(div,appendTo)
-
-const $dataScript = document.querySelectorAll('[data-stork-product');
-$dataScript.forEach((element, position) => {
-  // const params = element.getAttribute('data-stork-product');
-  // element.insertAdjacentHTML('beforeend', `<p>Foi ${params}</p>`)
-  // element.removeAttribute('data-stork-product');
-
-  const iframe = document.createElement('iframe');
-  iframe.contentWindow.document.write('<h2>iframe</h2>');
-
-  element.appendChild(iframe);
-  element.removeAttribute('data-stork-product');
-})

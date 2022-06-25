@@ -1,0 +1,42 @@
+body{
+  position: relative !important;
+}
+
+.grwp.grwp-btn{
+  border: none !important;
+  width: max-content !important;
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  
+  animation: all 5s ease-in-out !important;
+}
+.grwp.grwp-btn:hover{
+  transform: scale(0.9) !important;
+  cursor: pointer !important;
+}
+.grwp.grwp-btn.hidden{
+  display: none !important;
+}
+.grwp.grwp-btn img {
+  width: 60px !important;
+}
+.grwp.grwp-btn p {
+  color: #4339ff !important;
+  font-weight: bold !important;
+  font-size: 12px !important;
+}
+
+/* WIDGET */
+.grwp.grwp-widget{
+  width: 300px !important;
+  height: 600px !important;
+  background-color: #7972ff !important;
+
+  position: fixed !important;
+  bottom: 0px !important;
+  right: 0px !important;
+}
+.grwp.grwp-widget.hidden{
+  display: none !important;
+}
