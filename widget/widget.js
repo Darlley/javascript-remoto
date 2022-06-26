@@ -23,19 +23,38 @@ function getWidgetParams(){
   textButton.innerHTML = "Precisa de Ajuda?"
   button.appendChild(textButton)
   
-  
-
-  // criar widget
+  // criar container widget
   var widget = document.createElement('div')
   widget.setAttribute('class','grwp grwp-widget hidden')
   
+  // criar iframe wdget
+  var iframe = document.createElement('iframe')
+  iframe.setAttribute('class', 'grwp grwp-iframe')
+  iframe.style.width = "300px";
+  iframe.style.height = "550px";
+  iframe.style.border = "none";
+  iframe.style.overflow = "hidden";
+  iframe.style.backgroundColor = "#006bff";
+
+  function addContentDocumentIframe(){
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var iframeBody = iframeDoc.body;
+    
+    iframeBody.innerHTML = "<h1>Darlley</h1>"
+  }
+
+  // adicionar iframe ao container widget
+  widget.appendChild(iframe);
 
   // EVENTOS
+
   // criar evento de click no botão
   button.setAttribute('data-growp-btn','')
   button.addEventListener('click', () => {
     button.classList.add('hidden')
     widget.classList.remove('hidden')
+
+    addContentDocumentIframe()
   })
   // criar evento de click no widget
   widget.addEventListener('click', () => {

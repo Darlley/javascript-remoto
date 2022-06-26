@@ -8,6 +8,7 @@ body{
   position: fixed !important;
   bottom: 2rem !important;
   right: 2rem !important;
+  z-index: 0;
   
   animation: all 5s ease-in-out !important;
 }
@@ -31,7 +32,9 @@ body{
 .grwp.grwp-widget{
   width: 300px !important;
   height: 600px !important;
+  overflow: hidden;
   background-color: #7972ff !important;
+  z-index: 2;
 
   position: fixed !important;
   bottom: 0px !important;
